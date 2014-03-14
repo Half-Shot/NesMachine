@@ -11,7 +11,10 @@ var pausePlayStop = function(stop) {
     if (stop) {
         MIDI.Player.stop();
         $( "#progress-animated" ).toggleClass("active");
+        $( "#play-icon" ).removeClass( "glyphicon-pause" );
+        $( "#play-icon" ).addClass( "glyphicon-play" );
         waitingToPlay = true;
+        $( "#progress-bar" ).width("0%");
         MIDI.Player.removeListener();
     } else if (MIDI.Player.playing) {
         $( "#play-icon" ).removeClass( "glyphicon-pause" );
@@ -47,7 +50,7 @@ var MidiFiles = {
 };
 function loadsong(id)
 {
-    MIDI.Player.stop();
+    notesthissong = 0;
     var data = MidiFiles.data[id];
     var name = MidiFiles.names[id]
     $("#title").html(name);
@@ -76,13 +79,19 @@ function msToTime(s) {
   return smins + ':' + ssecs;
 }
 notecount = 0;
+notesthissong = 0
 function UpdateUI(data)
 {
     percenttimedone = 100 * (data.now / data.end);
     notecount++;
+    notesthissong++;
     $( "#notesplayed").html(notecount);
+    $( "#notesplayedthissong").html(notesthissong);
+    seconds = (data.now / 1000);
+    $( "#notespersecond").html(Math.round(notesthissong / seconds));
     $( "#progress-bar" ).width(percenttimedone + "%");
     $( "#time" ).html(msToTime(data.now));
+    
 }
 
 
@@ -120,13 +129,14 @@ $("#dragfileshere").on("drop", function(e) {
     if (e.preventDefault) e.preventDefault(); // stops the browser from redirecting off to the text.
     e.stopPropagation();
     //Check type
-    if(e.originalEvent.dataTransfer.files[0].type == '"audio/midi"'){
+    //Firefox uses '"audio/midi"' while chrome uses 'audio/midi'. Whatever
+    if(e.originalEvent.dataTransfer.files[0].type == '"audio/midi"' || e.originalEvent.dataTransfer.files[0].type == 'audio/midi'){
         MidiFiles.names.push(e.originalEvent.dataTransfer.files[0].name);
-        $("#files").append("<button class='btn btn-default' type='button' onclick='loadsong(" + (MidiFiles.data.length) + ")'>" + e.originalEvent.dataTransfer.files[0].name + "</button><br>");
+        $("#files").append("<button style='width:200px; overflow:hidden;' class='btn btn-default' type='button' onclick='loadsong(" + (MidiFiles.data.length) + ")'>" + e.originalEvent.dataTransfer.files[0].name + "</button>");
         reader.readAsDataURL(e.originalEvent.dataTransfer.files[0]);
     }
     else{
-        alert("Not a Midi!")
+        alert("Not a Midi!\n This is a " + e.originalEvent.dataTransfer.files[0].type)
     }
     $("#dragfileshere").css('border-color', '');
     return false;
