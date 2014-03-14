@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="./midijs/MIDI/AudioDetect.js" type="text/javascript"></script>
+        <script src="./midijs/MIDI/LoadPlugin.js" type="text/javascript"></script>
+        <script src="./midijs/MIDI/Plugin.js" type="text/javascript"></script>
+        <script src="./midijs/Window/DOMLoader.XMLHttp.js" type="text/javascript"></script>
+        <script src="./midijs/Window/Event.js" type="text/javascript"></script>
+        <script src="./midijs/Window/Queue.js" type="text/javascript"></script>
+        <script src="./midijs/MIDI/Player.js" type="text/javascript"></script>
+        <script src="./midijs/Widgets/Loader.js" type="text/javascript"></script>
+                <!-- jasmid package -->
+        <script src="./midijs/jasmid/stream.js"></script>
+        <script src="./midijs/jasmid/midifile.js"></script>
+        <script src="./midijs/jasmid/replayer.js"></script>
+        <!-- extras -->
+        <script src="./midijs/Base64.js" type="text/javascript"></script>
+        <script src="./midijs/base64binary.js" type="text/javascript"></script>
+    </head>
+    <body>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+     <div id="eq">
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+      <div class="eqbar"></div>
+     </div>
+      <div class="container">
+        <h1 id="title">Drag a Midi</h1>
+        <p id="extrainfo">|</p>
+      </div>
+    </div>
+
+    <div class="container" id="mainbox">
+        <div class="btn-group">
+            <button id="slowdown" class="btn"><span id="back-icon" class="glyphicon glyphicon-backward"></button>
+            <button id="play" class="btn"><span id="play-icon" class="glyphicon glyphicon-play"></span></button>
+            <button id="stop" class="btn"><span id="stop-icon" class="glyphicon glyphicon-stop"></button>
+            <button id="speedup" class="btn"><span id="next-icon" class="glyphicon glyphicon-forward"></button>
+        </div>
+        
+        <div id="#progress-animated" class="progress progress-striped ">
+          <div class="progress-bar" id="progress-bar" role="progressbar" style="width: 0%">
+            <span id="time">0:00/0:00</span>
+          </div>
+        </div>
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-lg-4">
+          <h2>Recent MIDIs</h2>
+          <div id="files" class="btn-group-vertical"></div>
+          <p><a class="btn btn-default" href="#">Complete List &raquo;</a></p>
+        </div>
+        <div class="col-lg-4">
+          <h2>Stats:</h2>
+          <p>Notes Played: <div id="notesplayed">0</div></p>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+       </div>
+        <div class="col-lg-4">
+          <h2>About NesMachine</h2>
+          <p>About the project</p>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+        </div>
+      </div>
+      <hr>
+      <div id="dragfileshere" style="border-style:dashed solid; background-image:url('img/dropmidi.gif'); left:25%; width:100%; opacity:0.8;text-align:center"><span style=" pointer-events: none;"><h1>Drop MIDI Here</h1></span></div>
+      <footer>
+        <p>By Half-Shot | MIT Licenced on <a href="http://github.com/Half-Shot/NesMachine" target="_new">Github</a></p>
+      </footer>
+    </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+
+        <script src="js/main.js"></script>
+    </body>
+</html>
